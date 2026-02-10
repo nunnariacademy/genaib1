@@ -1,62 +1,47 @@
-# Core Machine Learning & Deep Learning
-torch>=2.1.0                    # PyTorch for building transformers from scratch
-numpy>=1.24.0                   # Numerical computing
-scipy>=1.11.0                   # Scientific computing utilities
-
-# Transformer Building Blocks
-transformers>=4.36.0            # Hugging Face transformers (reference implementations)
-tokenizers>=0.15.0              # Fast tokenizers
-sentencepiece>=0.1.99           # Tokenization library
-
 # LangChain Core
-langchain>=0.1.0                # LangChain framework
-langchain-core>=0.1.0           # LangChain core components
-langchain-community>=0.0.10     # Community integrations
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-community>=0.3.0
 
 # LLM Provider Integrations
-langchain-openai>=0.0.5         # OpenAI integration for LangChain
-langchain-anthropic>=0.1.0      # Anthropic (Claude) integration
-langchain-google-genai>=0.0.5   # Google Gemini integration
+langchain-openai>=0.2.0          # OpenAI (GPT models)
+langchain-anthropic>=0.2.0       # Anthropic (Claude)
+langchain-google-genai>=0.1.0    # Google Gemini
+langchain-ollama>=0.1.0          # Ollama (local models)
 
-# Direct API Clients
-openai>=1.10.0                  # OpenAI API client
-anthropic>=0.8.0                # Anthropic API client
-google-generativeai>=0.3.0      # Google Gemini API client
+# Direct API Clients (optional - use if calling APIs directly)
+openai>=1.12.0
+anthropic>=0.18.0
+google-generativeai>=0.4.0
 
-# Tokenization & Text Processing
-tiktoken>=0.5.2                 # OpenAI's tokenizer
-regex>=2023.12.0                # Regular expressions
+# Vector Stores for RAG
+chromadb>=0.4.0                  # ChromaDB vector database
+faiss-cpu>=1.7.4                 # Facebook AI Similarity Search
+
+# Text Processing & Embeddings
+tiktoken>=0.6.0                  # OpenAI tokenizer
+sentence-transformers>=2.3.0     # Embeddings for RAG
 
 # Environment & Configuration
-python-dotenv>=1.0.0            # Load environment variables from .env
-pydantic>=2.5.0                 # Data validation
-pydantic-settings>=2.1.0        # Settings management
+python-dotenv>=1.0.0             # Load .env files
+pydantic>=2.6.0                  # Data validation
+pydantic-settings>=2.2.0         # Settings management
+
+# Jupyter Support
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipykernel>=6.29.0
+notebook>=7.0.0
 
 # Data Handling
-pandas>=2.1.0                   # Data manipulation
-datasets>=2.16.0                # Hugging Face datasets
-
-# Visualization & Progress
-matplotlib>=3.8.0               # Plotting and visualization
-tqdm>=4.66.0                    # Progress bars
-seaborn>=0.13.0                 # Statistical visualization
+pandas>=2.2.0                    # Data manipulation
+numpy>=1.26.0                    # Numerical computing
 
 # Utilities
-requests>=2.31.0                # HTTP requests
-aiohttp>=3.9.0                  # Async HTTP requests
-python-json-logger>=2.0.7       # JSON logging
+requests>=2.31.0                 # HTTP requests
+aiohttp>=3.9.0                   # Async HTTP
+tqdm>=4.66.0                     # Progress bars
 
-# Vector Stores (optional but useful for LangChain)
-chromadb>=0.4.22                # Vector database
-faiss-cpu>=1.7.4                # Facebook AI Similarity Search
-
-# Optional: Jupyter support
-jupyter>=1.0.0                  # Jupyter notebook
-ipykernel>=6.28.0               # Jupyter kernel
-ipywidgets>=8.1.0               # Interactive widgets
-
-# Development & Testing (optional)
-pytest>=7.4.0                   # Testing framework
-black>=23.12.0                  # Code formatter
-flake8>=7.0.0                   # Linting
-mypy>=1.8.0                     # Type checking
+# Development Tools (optional)
+pytest>=8.0.0                    # Testing
+black>=24.0.0                    # Code formatting

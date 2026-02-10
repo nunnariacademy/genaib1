@@ -1,190 +1,284 @@
-# IDE Setup Guide - Table of Contents
+# Complete Development Environment Setup Guide
 
-Welcome to the comprehensive IDE Setup Guide! This guide will walk you through setting up a complete development environment for modern software development on **Windows, Linux, and macOS**.
-
-## 🖥️ Multi-Platform Support
-
-All guides in this collection support **three major operating systems**:
-- 🪟 **Windows** (10/11)
-- 🐧 **Linux** (Ubuntu, Debian, Fedora, Arch, openSUSE)
-- 🍎 **macOS** (Catalina and later)
-
-Each guide includes OS-specific instructions with jump links for quick navigation.
+A streamlined guide for setting up Python, Git, VS Code, Jupyter, LangChain, and Ollama for AI/ML development.
 
 ---
 
-## 📋 Installation Guides
+## 📋 Quick Overview
 
-### 1. **[Python Installation Guide](python-installation.md)**
-   **Platforms:** Windows | Linux | macOS
-
-   - **Windows**: Microsoft Store or Python.org installer
-   - **Linux**: apt, dnf, pacman, zypper (multiple distros)
-   - **macOS**: Homebrew or Python.org installer
-   - Verifying installation across all platforms
-   - Platform-specific troubleshooting
-
-### 2. **[Visual Studio Code Installation Guide](vscode-installation.md)**
-   **Platforms:** Windows | Linux | macOS
-
-   - **Windows**: Direct download installer
-   - **Linux**: apt, snap, dnf, AUR, zypper
-   - **macOS**: Direct download or Homebrew
-   - Essential AI extensions (GitHub Copilot, Codeium, Tabnine)
-   - Python development extensions
-   - Productivity extensions and configuration
-
-### 3. **[GitHub Account Setup Guide](github-login.md)**
-   **Platforms:** Universal (Web-based) + OS-specific SSH setup
-
-   - Creating a GitHub account (all platforms)
-   - Two-factor authentication setup
-   - **Windows**: SSH key generation (CMD, PowerShell, Git Bash)
-   - **Linux**: SSH key generation and configuration
-   - **macOS**: SSH key with Keychain integration
-   - Email privacy settings
-
-### 4. **[Git Installation and Configuration Guide](git-installation.md)**
-   **Platforms:** Windows | Linux | macOS
-
-   - **Windows**: Git for Windows installer (detailed walkthrough)
-   - **Linux**: apt, dnf, pacman, zypper installation
-   - **macOS**: Homebrew, Xcode Command Line Tools, or binary installer
-   - Global configuration for all platforms
-   - Connecting to GitHub (HTTPS, SSH, GitHub CLI)
-   - Platform-specific credential helpers
-
-### 5. **[Python Virtual Environment (venv) Guide](python-venv-guide.md)**
-   **Platforms:** Windows | Linux | macOS
-
-   - Understanding virtual environments
-   - Creating venv (same across all platforms)
-   - **Windows**: Activation in CMD, PowerShell, Git Bash
-   - **Linux/macOS**: Activation in Bash, Zsh, Fish shells
-   - Basic usage and examples
-   - VS Code integration
+This guide covers:
+1. **Python** - Python installation
+2. **Git & GitHub** - Version control and remote repository access
+3. **VS Code** - Code editor with Jupyter extension
+4. **Virtual Environments** - Project isolation with venv
+5. **Jupyter** - Interactive notebooks
+6. **LangChain** - LLM application framework
+7. **Ollama** - Local LLM runtime
 
 ---
 
-## 🚀 Quick Start
+## 1. Python Installation
 
-Follow the guides in the order listed above for the smoothest setup experience:
+### Install Python
 
-1. **Install Python** for your operating system
-2. **Install VS Code** and essential extensions
-3. **Create GitHub account** and set up SSH keys
-4. **Install and configure Git** to work with GitHub
-5. **Learn virtual environments** for Python projects
+**Windows:**
+```bash
+# Download Python 3.14.3 installer:
+https://www.python.org/ftp/python/3.14.3/python-3.14.3-amd64.exe
 
-Each guide is designed to be comprehensive yet easy to follow, with clear OS-specific sections.
+# During installation:
+# ✅ CHECK "Add Python to PATH" (IMPORTANT!)
+# ✅ CHECK "Install for all users" (optional)
+```
 
----
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt update && sudo apt install python3 python3-pip python3-venv -y
+```
 
-## 📦 Project Dependencies (Optional)
+**Linux (Fedora):**
+```bash
+sudo dnf install python3 python3-pip -y
+```
 
-After completing the setup guides, you can install all necessary packages for advanced Python development:
+**macOS:**
+```bash
+# Using Homebrew (recommended):
+brew install python
 
-### Installing from requirements.txt
+# Or download from: https://www.python.org/downloads/
+```
 
-The included `requirements.txt` contains packages for:
-- 🤖 Building transformers from scratch (PyTorch)
-- 🔗 Working with LangChain framework
-- 🌐 Integrating OpenAI, Anthropic (Claude), and Google Gemini APIs
-- 📊 Data processing and visualization
-- 📓 Jupyter notebooks for interactive development
-
-**Installation:**
-
-1. **Create and activate virtual environment** (see [venv guide](python-venv-guide.md))
-
-   **Windows:**
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-   **Linux/macOS:**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-2. **Install all packages:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up API keys** (if using LLM providers):
-   - Copy `.env.example` to `.env`
-   - Add your API keys (OpenAI, Anthropic, Google)
-   - See [PROJECT_SETUP.md](PROJECT_SETUP.md) for details
-
-**What's Included:**
-- PyTorch, NumPy, SciPy (ML/DL)
-- Transformers, Tokenizers (Hugging Face)
-- LangChain + OpenAI/Anthropic/Gemini integrations
-- Pandas, Matplotlib, Seaborn (data & viz)
-- ChromaDB, FAISS (vector stores)
-- Jupyter notebooks
-- Development tools (pytest, black, flake8)
+### Verify Installation
+```bash
+python --version  # Should show Python 3.14.3
+pip --version
+```
 
 ---
 
-## 💡 Prerequisites
+## 2. Git & GitHub Setup
 
-### All Operating Systems
-- Administrator/sudo privileges
-- Stable internet connection
-- Basic command line/terminal knowledge
+### Install Git
 
-### Platform-Specific
-- **Windows**: Windows 10 (version 1903+) or Windows 11
-- **Linux**: Modern distribution (Ubuntu 20.04+, Fedora 35+, etc.)
-- **macOS**: macOS 10.15 (Catalina) or later
+**Windows:**
+```bash
+# Download and install from:
+https://git-scm.com/download/win
+# Or use winget:
+winget install Git.Git
+```
 
----
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt update && sudo apt install git -y
+```
 
-## 🎯 What You'll Have After Completion
+**macOS:**
+```bash
+# Using Homebrew:
+brew install git
+# Or use Xcode Command Line Tools:
+xcode-select --install
+```
 
-- ✅ Python development environment
-- ✅ Visual Studio Code with AI-powered extensions
-- ✅ GitHub account with SSH authentication
-- ✅ Git version control configured
-- ✅ Virtual environment management skills
+### Configure Git
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
 
----
+### Setup GitHub
 
-## 📊 Platform Support Matrix
+1. **Create account**: [github.com/signup](https://github.com/signup)
 
-| Guide | Windows | Linux | macOS | Universal |
-|-------|---------|-------|-------|-----------|
-| Python Installation | ✅ | ✅ | ✅ | ✅ Verification |
-| VS Code Installation | ✅ | ✅ | ✅ | ✅ Extensions |
-| GitHub Setup | ✅ SSH | ✅ SSH | ✅ SSH | ✅ Account |
-| Git Installation | ✅ | ✅ | ✅ | ✅ Config |
-| Python venv | ✅ | ✅ | ✅ | ✅ Usage |
-
----
-
-## 📞 Support
-
-If you encounter any issues during the installation process:
-- Refer to the **troubleshooting section** in each individual guide
-- Each guide has OS-specific troubleshooting for common issues
-- Check the **verification checklists** to ensure proper installation
+2. **That's it!** Git will prompt for credentials when you push/pull. Use HTTPS URLs for repositories.
 
 ---
 
-## 📚 Additional Features
+## 3. VS Code Installation
 
-- **Jump Links**: Quick navigation to your operating system section
-- **Command Reference Tables**: Compare commands across platforms
-- **Verification Steps**: Ensure successful installation
-- **Best Practices**: Industry-standard setup recommendations
-- **Troubleshooting**: Platform-specific solutions
+**Windows:**
+```bash
+# Download from: https://code.visualstudio.com/
+# Or use winget:
+winget install Microsoft.VisualStudioCode
+```
+
+**Linux:**
+```bash
+# Using Snap (most distros):
+sudo snap install code --classic
+
+# Or download .deb/.rpm from: https://code.visualstudio.com/
+```
+
+**macOS:**
+```bash
+brew install --cask visual-studio-code
+```
+
+### Install Jupyter Extension
+
+**Method 1: Via VS Code UI**
+1. Open VS Code
+2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (macOS)
+3. Search for "Jupyter"
+4. Install "Jupyter" by Microsoft
 
 ---
 
-**Last Updated:** February 2026
+## 4. Virtual Environment (venv)
 
-**Version:** 1.0 - Multi-Platform Support
+### Create Virtual Environment
+
+```bash
+# Navigate to your project directory
+cd /path/to/your/project
+
+# Create venv
+python -m venv venv
+```
+
+### Activate Virtual Environment
+
+**Windows (CMD):**
+```cmd
+venv\Scripts\activate.bat
+```
+
+**Windows (PowerShell):**
+```powershell
+venv\Scripts\Activate.ps1
+# If you get an error, run this once as admin:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+**Linux/macOS:**
+```bash
+source venv/bin/activate
+```
+
+### Verify Activation
+```bash
+# You should see (venv) in your prompt
+# Check Python location:
+which python  # Linux/macOS
+where python  # Windows
+```
+
+### Deactivate
+```bash
+deactivate
+```
+
+---
+
+## 5. Jupyter Installation
+
+**Install globally (recommended for beginners):**
+```bash
+pip install jupyter jupyterlab
+```
+
+**Launch Jupyter:**
+```bash
+# Jupyter Notebook (classic):
+jupyter notebook
+
+# JupyterLab (modern):
+jupyter lab
+```
+
+**Use Jupyter in VS Code:**
+1. Create a `.ipynb` file in VS Code
+2. VS Code will automatically use the Jupyter extension
+3. Select your venv as the kernel (click kernel picker in top-right)
+
+---
+
+## 6. LangChain Setup
+
+### Install LangChain
+
+**Basic installation:**
+```bash
+pip install langchain langchain-community
+```
+
+**Install from requirements.txt (recommended):**
+```bash
+pip install -r requirements.txt
+```
+
+### Requirements.txt Contents
+
+The included `requirements.txt` contains:
+- **LangChain Core**: Framework and community integrations
+- **LLM Providers**: OpenAI, Anthropic (Claude), Google Gemini, Ollama
+- **Vector Stores**: ChromaDB, FAISS (for RAG applications)
+- **Utilities**: Environment management, text processing
+
+### Environment Variables
+
+Create a `.env` file in your project root:
+```bash
+# .env
+OPENAI_API_KEY=your_openai_key_here
+ANTHROPIC_API_KEY=your_anthropic_key_here
+GOOGLE_API_KEY=your_google_key_here
+```
+
+**Load in Python:**
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+---
+
+## 7. Ollama Installation
+
+### Install Ollama
+
+**Windows:**
+```bash
+# Download from: https://ollama.ai/download/windows
+# Run the installer
+```
+
+**Linux:**
+```bash
+curl -fsSL https://ollama.ai/install.sh | sh
+```
+
+**macOS:**
+```bash
+# Download from: https://ollama.ai/download/mac
+# Or use Homebrew:
+brew install ollama
+```
+
+### Pull Models
+
+```bash
+# Popular models:
+ollama pull "model-name"
+
+# List installed models:
+ollama list
+
+# Run model:
+ollama run llama3.2
+```
+
+### Use Ollama with LangChain
+
+```python
+from langchain_community.llms import Ollama
+
+llm = Ollama(model="llama3.2")
+response = llm.invoke("What is LangChain?")
+print(response)
+```
+
