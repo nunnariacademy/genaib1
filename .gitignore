@@ -1,0 +1,32 @@
+# Environment
+.env
+.env.*
+
+# Audio/Media files
+*.mp3
+*.aac
+*.flac
+*.wav
+*.m4a
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
